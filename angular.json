@@ -54,6 +54,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "baseHref": "https://vagrantai-c.github.io/CV/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
