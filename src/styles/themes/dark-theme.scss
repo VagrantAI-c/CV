@@ -1,0 +1,13 @@
+@import '../theming.scss';
+
+.dark-theme {
+    $theme: mat-dark-theme((
+        color: (
+            primary: $primary,
+            accent: $accent,
+            warn: $warn,  
+        )
+    ));
+    @include angular-material-theme($theme);
+    @include cv-theme($theme);
+}

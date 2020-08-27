@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+@import '../app/components/personal/personal-theme.scss';
+
+@include mat-core();
+
+$primary: mat-palette($mat-blue);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+$warn:    mat-palette($mat-red);
+
+/** Mixin of all themable components throughout the app */
+@mixin cv-theme($theme) {
+    @include cv-personal-theme($theme);
+}
