@@ -1,0 +1,22 @@
+.contacts-body {
+    display: flex;
+    align-items: center;
+
+    & > :not(:last-child) {
+        margin-right: 8pt;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    .entry-block {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+
+        & > :not(:last-child) {
+            margin-right: 4pt;
+        }
+    }
+}

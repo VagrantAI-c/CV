@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@mixin cv-personal-theme($theme) {
+    $foreground: map-get($theme, foreground);
+
+    .personal-body {
+        .skills-section {
+            border-color: mat-color($foreground, divider);
+        }
+    }
+}
