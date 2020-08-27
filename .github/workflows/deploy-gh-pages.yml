@@ -25,6 +25,9 @@ jobs:
     - name: Build
       run: npm run build:prod
 
+    - name: Copy 404.html
+      run: cp dist/cv/index.html dist/cv/404.html
+
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.4
       with:
