@@ -7,6 +7,10 @@ body {
     font-family: Arial, sans-serif; // Arial is default for Google Docs
 }
 
+* {
+    box-sizing: border-box;
+}
+
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;

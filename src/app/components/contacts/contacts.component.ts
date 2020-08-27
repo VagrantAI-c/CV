@@ -26,7 +26,7 @@ export class ContactsComponent implements OnInit {
     }
 
     private registerIcon(name: string): void {
-        this.iconRegistry.addSvgIcon(name, this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/${name}.svg`));
+        this.iconRegistry.addSvgIcon(name, this.sanitizer.bypassSecurityTrustResourceUrl(`assets/${name}.svg`));
     }
 
 }
