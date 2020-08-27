@@ -1,10 +1,12 @@
 // * - values taken from Google Docs
 
 .personal-body {
-    width: 794px; // *
+    $padding: 96px; // *
+
+    width: calc(794px + #{$padding} * 2); // *
     height: 1103px; // *, default height for single empty page
     margin: 3.75pt; // *, so bottom box-shadow will be visible
-    padding: 96px; // *
+    padding: $padding; // *
     background: white; // *
     box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; // *
 
