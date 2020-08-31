@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "encode-source": {
+      "description": "Encodes templated strings with AES",
+      "schema": "./encode-source/schema.json",
+      "factory": "./encode-source/index#encodeSource"
+    }
+  }
+}
