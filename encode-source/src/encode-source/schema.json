@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "id": "Codec",
-    "title": "Codec schematics options",
+    "id": "Encode",
+    "title": "Encode schematics options",
     "type": "object",
     "properties": {
         "password": {

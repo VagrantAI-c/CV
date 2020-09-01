@@ -1,10 +1,11 @@
 import { Path } from '@angular-devkit/core';
 import { chain, FileEntry, filter, forEach, Rule } from '@angular-devkit/schematics';
+import { Schema } from './schema';
 const CryptoJS = require('crypto-js');
 
 const DELIMITER = '%%';
 
-export function encodeSource(options: {password: string}): Rule {
+export function encodeSource(options: Schema): Rule {
     return () => {
         return chain([
             // We work under src folder only

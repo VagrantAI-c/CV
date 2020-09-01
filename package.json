@@ -9,14 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dry-run:encode": "tsc -p ./encode-source/tsconfig.json && schematics ./encode-source:encode-source --dry-run=false",
-    "dry-run:decode": "tsc -p ./decode-source/tsconfig.json && schematics ./decode-source:decode-source --dry-run=false"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsc -p ./encode-source/tsconfig.json && schematics ./encode-source:encode-source --dry-run=false --password=HUSKY_GIT_STDIN",
-      "post-commit": "tsc -p ./decode-source/tsconfig.json && schematics ./decode-source:decode-source --dry-run=false --password=HUSKY_GIT_STDIN"
-    }
+    "run:encode": "tsc -p ./encode-source/tsconfig.json && schematics ./encode-source:encode-source --dry-run=false --password=$P",
+    "run:decode": "tsc -p ./decode-source/tsconfig.json && schematics ./decode-source:decode-source --dry-run=false --password=$P",
+    "run:commit": "tsc -p ./commit/tsconfig.json && schematics ./commit:commit --dry-run=false"
   },
   "private": true,
   "dependencies": {
@@ -45,7 +40,6 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0-next.1",
-    "husky": "^4.2.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
