@@ -13,7 +13,10 @@
         width: 794px;
         height: 1123px;
         margin: 0;
-        box-shadow: none;
+
+        &.mat-elevation-z2.mat-elevation-z2 { // Override shadow w/o !important
+            box-shadow: none;
+        }
     }
 
     .content {

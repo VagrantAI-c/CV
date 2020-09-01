@@ -5,7 +5,7 @@
     & > :not(:last-child) {
         margin-right: 8pt;
     }
-
+    
     a {
         cursor: pointer;
         color: inherit;
@@ -23,12 +23,18 @@
         align-items: center;
         margin-bottom: 0;
 
-        mat-icon {
-            flex: none;
-        }
-
         & > :not(:last-child) {
             margin-right: 4pt;
+        }
+
+        &.unprintable {
+            @media print {
+                display: none;
+            }
+        }
+
+        mat-icon {
+            flex: none;
         }
     }
 

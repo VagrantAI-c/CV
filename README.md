@@ -14,6 +14,8 @@ This project features sensitive content encryption with AES cyphering:
 - Decrypt content with `npm run decrypt` (password is required) so anyone can collaborate with the sensitive content
 - Run `npm run commit`, enter password and commit name, and all files would be encrypted before commiting and decrypted after
 
+**Primary con** of such system is that git diff will be littered with encoded labels.
+
 ### Usage
 
 Any sensitive content should wrapped with delimiters and passed to `decode` pipe, e.g. 
