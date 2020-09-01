@@ -21,6 +21,7 @@
         font-size: 12pt;
         display: flex;
         flex-direction: column;
+        min-width: 0;
     }
 
     .personal-section {
@@ -32,6 +33,9 @@
         margin-bottom: 8pt;
         font-weight: 600;
         font-size: 16pt;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .position-label {

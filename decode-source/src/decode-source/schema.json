@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "id": "Decode",
+    "title": "Decode schematics options",
+    "type": "object",
+    "properties": {
+        "password": {
+            "type": "string",
+            "minLength": 10,
+            "x-prompt": "Create a password"
+        }
+    },
+    "required": [
+        "password"
+    ]
+}

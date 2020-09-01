@@ -5,12 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { PersonalModule } from './components/personal/personal.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        RouterModule.forRoot([], {initialNavigation: true}),
         PersonalModule,
     ],
     declarations: [

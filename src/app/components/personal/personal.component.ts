@@ -8,5 +8,4 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
     encapsulation: ViewEncapsulation.None, // For themable component to work
 })
 export class PersonalComponent {
-
 }

@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "id": "Commit",
+    "title": "Commit schematics options",
+    "type": "object",
+    "properties": {
+        "password": {
+            "type": "string",
+            "minLength": 10,
+            "x-prompt": "Create a password"
+        },
+        "commitMessage": {
+            "type": "string",
+            "x-prompt": "Enter commit message"
+        }
+    },
+    "required": [
+        "password",
+        "commitMessage"
+    ]
+}
