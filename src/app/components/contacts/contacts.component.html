@@ -1,7 +1,8 @@
 <div class="contacts-body">
     <a 
+        [href]="'mailto:' + ('##U2FsdGVkX1//dksvL1et60KsABodrNiwWq2S+obon+LFKjz/fuw74JSs0QKF74Nw##' | decode)"
         title="My e-mail"
-        class="entry-block">
+        class="entry-block email-anchor">
         <mat-icon 
             aria-hidden="false"
             aria-label="My e-mail">
@@ -9,6 +10,7 @@
         </mat-icon>
     </a>
     <a 
+        [href]="'##U2FsdGVkX19ZQTZBH3NWrmjbLJstRqNR9I9fh3hoR/MYE0SbGK5cGsAj650dud7X##' | decode"
         title="Me on Github"
         class="entry-block">
         <mat-icon 
@@ -18,6 +20,7 @@
         </mat-icon>
     </a>
     <a 
+        [href]="'##U2FsdGVkX1+H+7+ddMnqzK8jRG1WQpQmm3Zdz3Y1BPOOKnOIXHZygSLiY4VK3QIs##' | decode"
         title="Me on Telegram"
         class="entry-block">
         <mat-icon 
@@ -27,6 +30,7 @@
         </mat-icon>
     </a>
     <a 
+        [href]="'##U2FsdGVkX194oxLLpRlz3qiBj4eNaO7qRitb9NXj280PKoyw7wy3vYiZXJcJgUDVUwMtDukAqak6kUnqLBBFaw==##' | decode"
         title="Me on Skype"
         class="entry-block">
         <mat-icon 
@@ -35,10 +39,14 @@
             aria-label="Me on Skype">
         </mat-icon>
     </a>
-    <p class="entry-block">
+    <a 
+        [href]="'tel:' + ('##U2FsdGVkX19MYi7z7PKfes1yIYq2McOvi13rw91U0p4=##' | decode)"
+        class="entry-block">
         <mat-icon>phone</mat-icon>
-        <a href="tel:89999999999">+7 999 999-99-99</a>
-    </p>
+        <span class="entry-label">
+            {{'##U2FsdGVkX1+ViTWrwp5SJwNaPeNd0Tb4LOxRudHje2lM5H2SvsqcsR/x6Q43L+vL##' | decode}}
+        </span>
+    </a>
     <p class="entry-block">
         <mat-icon 
             svgIcon="metropoliten"
@@ -46,6 +54,8 @@
             aria-hidden="false"
             aria-label="I live at subway station">
         </mat-icon>
-        <span>Station name</span>
+        <span class="entry-label">
+            {{'##U2FsdGVkX1/ffKD89ZGUmB/lh/r31DQtgwnvJQwJfXywQ+n5oLnjytk4zIJ6CfOh##' | decode}}
+        </span>
     </p>
 </div>

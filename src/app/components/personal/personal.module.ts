@@ -4,17 +4,17 @@ import { NgModule } from '@angular/core';
 import { BioModule } from '../bio/bio.module';
 import { ContactsModule } from '../contacts/contacts.module';
 import { PersonalComponent } from './personal.component';
-import { DecodePipe } from '../../pipes/decode.pipe';
+import { DecodeModule } from '../../pipes/decode/decode.module';
 
 @NgModule({
     imports: [
         CommonModule,
         ContactsModule,
         BioModule,
+        DecodeModule,
     ],
     declarations: [
         PersonalComponent,
-        DecodePipe,
     ],
     exports: [
         PersonalComponent,

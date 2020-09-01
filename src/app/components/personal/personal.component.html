@@ -2,18 +2,22 @@
     <section 
         aria-label="Personal info" 
         class="personal-section">
-        <div class="content">
+        <div class="content personal-block">
             <h2 class="name-label">
-                {{'%%U2FsdGVkX19yuOp6Rq4oHNviknV1QiUwk2TgTWHuIBVxjJhmhIlFPATSYszQzrGn%%' | decode}}
+                {{'##U2FsdGVkX18iz0O/U17qruF+hs0KJDYh3V4WGj2QKv5wTQlyLG1gEp9h9/3vuRop##' | decode}}
             </h2>
-            <p class="position-label">Frontend developer</p>
-            <p class="experience-label">With almost N years of surpassing Angular experience</p>
+            <p class="position-label">
+                {{'##U2FsdGVkX18LYPGu09i6kPhktmdhFOhHMusZ4b3S1IBSDBXn8KE+Mj0kVHI9GDF1##' | decode}}
+            </p>
+            <p class="experience-label">
+                {{'##U2FsdGVkX1/opoRVgzKq64UUuhvgbc3mKZSEmdLA2NNkuYF3cM84Zb4PXpiy3cLWg7dXLuikyR4DnoMfhYpnBFvyxfGKSjsJp9ZHZaomqSQ=##' | decode}}
+            </p>
             <cv-contacts></cv-contacts>
         </div>
         <img 
-            src="https://via.placeholder.com/150x200"
-            alt="Photo of me thinking reactively"
-            title="This is me, thinking reactively"
+            [src]="'##U2FsdGVkX1/eAX90dqPq1qmItvmWndudBEPfwsYvsAeWcQLLIU/S2IiMd3Ltd4wBudXUOCiWWl1bwQWljTPJFQ==##' | decode"
+            [alt]="'##U2FsdGVkX18MT470rtdSZtsYaJ3AOo8qO7AUoMoyNANunfw7NkMfeYxCS2xTqq91##' | decode"
+            [title]="'##U2FsdGVkX187oBukhDEbsnkNo6afCEKEPNpSfpGZa8PT4XtQyge5k4nWPywKHqzH##' | decode"
             class="mat-elevation-z4 photo-image">
     </section>
     <section
@@ -32,11 +36,16 @@
     <section
         aria-label="Goals"
         class="content">
-        <span>Statements about passions. Besides:</span>
-        <ul>
-            <li>Goal one</li>
-            <li>Goal two</li>
-            <li>Goal three</li>
+        <span class="goals-label">
+            {{'##U2FsdGVkX1/AbnDYnFot0SkAz6evB+PhJWMsDh698SeqWY/RKi9UcJTRNfrkFO6DQDv02mFe8es7eBAypmo3+7Nc43vWBDS8x9W+N8OkgfMkQHBeGqpwrHVc3yrPfjgU##' | decode}}
+        </span>
+        <ul class="goals-list">
+            <li>
+                {{'##U2FsdGVkX1+JWYbPRQKmOZYbZPShIfZNd5KloNj3Xa85TnxaVx0QL+zD5xMPqe43OEyeMeGA+DDZm4+SYriews3IVC1HVAvVZ03Y5PUpgObjNk/X3vipb9VWqmxJ890t0e0s5+MxntE1ZKlYspWUxQ==##' | decode}}
+            </li>
+            <li>
+                {{'##U2FsdGVkX1+Te8tfvcyEZtiGdWU6pMyVSmEZHTOzF+y2clZ/8Cmx+NWtRDS318McduruBRbH7dnvjgRKVsh/vWw9JAypOkocQJ/j0uVJCQhUPTMTfZLG8g9lettLu+U6##' | decode}}
+            </li>
         </ul>
     </section>
     <section
@@ -47,15 +56,36 @@
     </section>
     <section
         aria-label="relations"
-        class="content">
-        <p>😍: X, Y, Z</p>
-        <p>🤢: X, Y, Z</p>
+        class="relations-block">
+        <p class="relation-label">
+            <span 
+                title="I like" 
+                aria-label="I like">
+                😍:
+            </span>
+            <span>
+                {{'##U2FsdGVkX18QPM4Q1/p/LryaHTuNIKIi6i8hnyJ56IH7PnsSDsLw+U/V+qxd+USy1qsVCZLxradSDb7l8GDFfw==##' | decode}}
+            </span>
+        </p>
+        <p class="relation-label">
+            <span 
+                title="I dislike" 
+                aria-label="I dislike">
+                🤢:
+            </span>
+            <span>
+                {{'##U2FsdGVkX18gs6J9VdU8YTp0YwOgTScOiYfWGjQ3QoPZ+7ue00cpy78ZDMMbPVzJy9qInfGjiFxOQOipqPfObg==##' | decode}}
+            </span>
+        </p>
     </section>
     <section
         aria-label="feedback"
         class="content">
         <i class="contact-label">
-            For further questions please feel free to contact me at <a href="mailto:email@mail.com">e-mail</a>.
+            {{'##U2FsdGVkX18puVtGYtM7pnB6TxeY6+G/0CE/0O8iIoR0fGovjVbu5vrBEeI5FlJ2cawMEQtgSli6T58oyGS13MC23FiccoVvt30wGV7Gs5w=##' | decode}}
+            <a [href]="'mailto:' + ('##U2FsdGVkX1/hM9nBcgqKYupA5MNWvXBRbdET/7SWY19tQ/CeAA2qy+WxUvXmeTz/##' | decode)">
+                {{'##U2FsdGVkX1/fOOxIRZeZR84nHz9bVC3hv96FDaSoTpRpv9HFrhsh8f/z9mGS1B4y##' | decode}}
+            </a>.
         </i>
     </section>
 </div>

@@ -8,15 +8,33 @@
 
     a {
         cursor: pointer;
+        color: inherit;
+        text-decoration: none;
+
+        &:link,
+        &:-webkit-any-link {
+            text-decoration: none;
+        }
     }
 
     .entry-block {
+        min-width: 24px;
         display: flex;
         align-items: center;
         margin-bottom: 0;
 
+        mat-icon {
+            flex: none;
+        }
+
         & > :not(:last-child) {
             margin-right: 4pt;
         }
+    }
+
+    .entry-label {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 }

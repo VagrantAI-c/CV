@@ -3,7 +3,8 @@ import { chain, FileEntry, filter, forEach, Rule } from '@angular-devkit/schemat
 import { Schema } from './schema';
 const CryptoJS = require('crypto-js');
 
-const DELIMITER = '%%';
+const ENCODED_DELIMITER = '\#\#';
+const DECODED_DELIMITER = '\%\%';
 
 export function encodeSource(options: Schema): Rule {
     return () => {
@@ -17,14 +18,17 @@ export function encodeSource(options: Schema): Rule {
             // Encode every %%phrase%% into %%hex%%
             forEach((fileEntry: FileEntry) => {
                 let content = fileEntry.content.toString();
-                let nextDelimiterIndex = content.indexOf(DELIMITER);
+                let nextDelimiterIndex = content.indexOf(DECODED_DELIMITER);
                 while (nextDelimiterIndex !== -1) {
-                    const delimiterIndexEnd = content.indexOf(DELIMITER, nextDelimiterIndex + DELIMITER.length);
-                    const phrase = content.slice(nextDelimiterIndex + DELIMITER.length, delimiterIndexEnd);
+                    const delimiterIndexEnd = content.indexOf(DECODED_DELIMITER, nextDelimiterIndex + DECODED_DELIMITER.length);
+                    const phrase = content.slice(nextDelimiterIndex + DECODED_DELIMITER.length, delimiterIndexEnd);
                     const encodedPhrase = CryptoJS.AES.encrypt(phrase, options.password).toString();
-                    content = content.replace(`${DELIMITER}${phrase}${DELIMITER}`, `${DELIMITER}${encodedPhrase}${DELIMITER}`);
-                    const nextStartIndex = nextDelimiterIndex + encodedPhrase.length + DELIMITER.length * 2;
-                    nextDelimiterIndex = content.indexOf(DELIMITER, nextStartIndex);
+                    const from = `${DECODED_DELIMITER}${phrase}${DECODED_DELIMITER}`;
+                    const to = `${ENCODED_DELIMITER}${encodedPhrase}${ENCODED_DELIMITER}`;
+                    content = content.replace(from, to);
+                    console.log(`${from} to ${to}`);
+                    const nextStartIndex = nextDelimiterIndex + encodedPhrase.length + ENCODED_DELIMITER.length * 2;
+                    nextDelimiterIndex = content.indexOf(DECODED_DELIMITER, nextStartIndex);
                 }
 
                 return {
