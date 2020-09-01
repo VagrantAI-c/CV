@@ -21,7 +21,6 @@ export function decodeSource(options: Schema): Rule {
                 while (nextDelimiterIndex !== -1) {
                     const delimiterIndexEnd = content.indexOf(DELIMITER, nextDelimiterIndex + DELIMITER.length);
                     const phrase = content.slice(nextDelimiterIndex + DELIMITER.length, delimiterIndexEnd);
-                    console.log(phrase);
                     const encodedPhrase = CryptoJS.AES.decrypt(phrase, options.password).toString(CryptoJS.enc.Utf8);
                     content = content.replace(`${DELIMITER}${phrase}${DELIMITER}`, `${DELIMITER}${encodedPhrase}${DELIMITER}`);
                     const nextStartIndex = nextDelimiterIndex + encodedPhrase.length + DELIMITER.length * 2;
