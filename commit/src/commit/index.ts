@@ -6,10 +6,12 @@ import { Schema } from './schema';
 export function commit(options: Schema): Rule {
     return () => {
         return chain([
-            executeCommand('npm', ['run', 'run:encode', `--password=${options.password}`]),
+            executeCommand('tsc', ['-p', './encode-source/tsconfig.json']),
+            executeCommand('schematics', ['./encode-source:encode-source', '--dry-run=false', `--password=${options.password}`]),
             executeCommand('git', ['add', '.']),
             executeCommand('git', ['commit', '-m', `"${options.commitMessage}"`]),
-            executeCommand('npm', ['run', 'run:decode', `--password=${options.password}`]),
+            executeCommand('tsc', ['-p', './decode-source/tsconfig.json']),
+            executeCommand('schematics', ['./decode-source:decode-source', '--dry-run=false', `--password=${options.password}`]),
         ]);
     };
 }

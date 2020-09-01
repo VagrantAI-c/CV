@@ -9,9 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "run:encode": "tsc -p ./encode-source/tsconfig.json && schematics ./encode-source:encode-source --dry-run=false --password=$P",
-    "run:decode": "tsc -p ./decode-source/tsconfig.json && schematics ./decode-source:decode-source --dry-run=false --password=$P",
-    "run:commit": "tsc -p ./commit/tsconfig.json && schematics ./commit:commit --dry-run=false"
+    "crypto-commit": "tsc -p ./commit/tsconfig.json && schematics ./commit:commit --dry-run=false"
   },
   "private": true,
   "dependencies": {
