@@ -1,0 +1,11 @@
+<div class="toolbar-body">
+    <button 
+        (click)="toggleTheme()"
+        mat-button
+        matTooltip="Toggle theme"
+        class="theme-button">
+        <mat-icon>
+            {{themeIcon$ | async}}
+        </mat-icon>
+    </button>
+</div>

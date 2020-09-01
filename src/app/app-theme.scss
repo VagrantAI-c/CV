@@ -1,0 +1,19 @@
+// * - values taken from Google Docs
+
+@mixin cv-app-theme($theme) {
+    $is-dark: map-get($theme, is-dark);
+    $foreground: map-get($theme, foreground);
+
+    .app-body {
+        transition: background-color 300ms ease, color 300ms ease;
+        color: mat-color($foreground, text);
+
+        @media screen {
+            background-color: if($is-dark, #272727, rgb(248, 249, 250)); // *
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+}

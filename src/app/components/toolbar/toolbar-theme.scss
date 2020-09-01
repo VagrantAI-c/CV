@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+@mixin cv-toolbar-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    .toolbar-body {
+        background-color: mat-color($background, card);
+        border-color: mat-color($foreground, divider);
+        transition: background-color 300ms ease, border-color 300ms ease;
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+}

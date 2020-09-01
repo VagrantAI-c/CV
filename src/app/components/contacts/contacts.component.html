@@ -1,7 +1,10 @@
 <div class="contacts-body">
     <a 
+        [href]="'mailto:' + ('##U2FsdGVkX1/mh3XdxmbBFsfaN8Y1RXRUyH5B1evLinB2O4ztqSZf+gSaD+iQVNt4##' | decode)"
         title="My e-mail"
-        class="entry-block">
+        target="_blank"
+        rel="noopener noreferrer"
+        class="unprintable entry-block email-anchor">
         <mat-icon 
             aria-hidden="false"
             aria-label="My e-mail">
@@ -9,8 +12,11 @@
         </mat-icon>
     </a>
     <a 
+        [href]="'##U2FsdGVkX192AiEWXLrqaD5LNNdoX2DHIhTNDUSNBF9o/MAb0g5w//1m+ejiL/6z##' | decode"
         title="Me on Github"
-        class="entry-block">
+        target="_blank"
+        rel="noopener noreferrer"
+        class="unprintable entry-block">
         <mat-icon 
             svgIcon="github-light"
             aria-hidden="false"
@@ -18,8 +24,11 @@
         </mat-icon>
     </a>
     <a 
+        [href]="'##U2FsdGVkX19PBMfXXUlkAbL8v8x7Ul+pkyxw/OwyzgUuBMbMMqOYV8ix1sMGv3fX##' | decode"
         title="Me on Telegram"
-        class="entry-block">
+        target="_blank"
+        rel="noopener noreferrer"
+        class="unprintable entry-block">
         <mat-icon 
             svgIcon="telegram"
             aria-hidden="false"
@@ -27,25 +36,38 @@
         </mat-icon>
     </a>
     <a 
+        [href]="'##U2FsdGVkX1/d3QySHsMTGfWZMvkNCCkN+mv8ScWWs8LUUItUHdgsU/VGyDFnsv0KEO+M5EipYvFpg1CRakNs/w==##' | decode"
         title="Me on Skype"
-        class="entry-block">
+        target="_blank"
+        rel="noopener noreferrer"
+        class="unprintable entry-block">
         <mat-icon 
             svgIcon="skype"
             aria-hidden="false"
             aria-label="Me on Skype">
         </mat-icon>
     </a>
-    <p class="entry-block">
+    <a 
+        [href]="'tel:' + ('##U2FsdGVkX18zp91C5ON78HrdgvfTYWaGVk7h4rzRpo4=##' | decode)"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="entry-block">
         <mat-icon>phone</mat-icon>
-        <a href="tel:89999999999">+7 999 999-99-99</a>
-    </p>
+        <span class="entry-label">
+            {{'##U2FsdGVkX19RQIDMKEQW7C/AIaM//dw9+aaKtGQ+Z/OlnwC7lJkvj1SsPJ5gm0lk##' | decode}}
+        </span>
+    </a>
     <p class="entry-block">
         <mat-icon 
+            [style.color]="metropolitenColor$ | async"
             svgIcon="metropoliten"
             title="I live at subway station"
             aria-hidden="false"
-            aria-label="I live at subway station">
+            aria-label="I live at subway station"
+            class="metropoliten-icon">
         </mat-icon>
-        <span>Station name</span>
+        <span class="entry-label">
+            {{'##U2FsdGVkX19LuD9gZ2o+DePcZPTPkSpqtI1BqHg8sbPYw8kcsNh3A3YdPlK9wDzJ##' | decode}}
+        </span>
     </p>
 </div>

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DecoderPasswordService } from './services/decoder-password/decoder-password.service';
+import { ThemeService } from './services/theme/theme.service';
 
 @Component({
     selector: 'cv-app',
@@ -14,10 +15,12 @@ export class AppComponent implements OnInit {
     constructor(
         private activatedRoute: ActivatedRoute,
         private decoderPassword: DecoderPasswordService,
+        private theme: ThemeService,
     ) {
     }
 
     public ngOnInit(): void {
+        this.theme.initialize();
         this.decoderPassword.initialize(this.activatedRoute);
     }
 

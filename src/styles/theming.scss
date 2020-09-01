@@ -1,5 +1,7 @@
 @import '~@angular/material/theming';
 @import '../app/components/personal/personal-theme.scss';
+@import '../app/components/toolbar/toolbar-theme.scss';
+@import '../app/app-theme.scss';
 
 @include mat-core();
 
@@ -9,5 +11,7 @@ $warn:    mat-palette($mat-red);
 
 /** Mixin of all themable components throughout the app */
 @mixin cv-theme($theme) {
+    @include cv-app-theme($theme);
     @include cv-personal-theme($theme);
+    @include cv-toolbar-theme($theme);
 }

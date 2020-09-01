@@ -3,14 +3,24 @@
 .app-body {
     min-height: 100%;
     display: flex;
-    justify-content: center;
-    
-    @media screen {
-        padding-top: 11px; // *
-        background: rgb(248, 249, 250); // *
+    flex-direction: column;
+    align-items: center;
+
+    .toolbar-component {
+        position: sticky;
+        top: 0;
+        width: 100%;
+
+        @media print {
+            display: none;
+        }
     }
 
     .page-component {
+        @media screen {
+            margin-top: 11px; // *
+        }
+
         @media print {
             width: 100%;
         }

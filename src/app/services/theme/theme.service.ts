@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Theme } from './models/theme.enum';
 
-const THEME_COOKIE_NAME = 'admin-theme';
+const THEME_COOKIE_NAME = 'cv-theme';
 /** Id to query default theme element */
 const DEFAULT_THEME_ID = 'head-theme-script';
 /** Whether default script element is not found, then use default theme */
@@ -34,8 +34,8 @@ export class ThemeService {
         private overlay: OverlayContainer,
         @Inject(DOCUMENT) private document: Document,
         private rendererFactory: RendererFactory2,
+        // tslint:disable-next-line: ban-types
         @Inject(PLATFORM_ID) private platformId: Object,
-        private breakpointObserver: BreakpointObserver,
     ) {
     }
 
@@ -43,11 +43,11 @@ export class ThemeService {
         return this.currentTheme$.asObservable();
     }
 
-    public loadingChanges(): Observable<boolean> {
-        return this.isLoading$.asObservable();
+    public get(): Theme {
+        return this.currentTheme$.getValue();
     }
 
-    public setTheme(theme: Theme): void {
+    public set(theme: Theme): void {
         if (this.isLoading$.getValue()) {
 
             return;
@@ -65,13 +65,9 @@ export class ThemeService {
     public initialize(): void {
         if (this.cookie.check(THEME_COOKIE_NAME)) {
             const theme: Theme = this.cookie.get(THEME_COOKIE_NAME) as Theme;
-            this.setTheme(theme);
-        } else if (this.breakpointObserver.isMatched('(prefers-color-scheme: dark)')) {
-            this.setTheme(Theme.DARK);
-        } else if (this.breakpointObserver.isMatched('(prefers-color-scheme: light)')) {
-            this.setTheme(Theme.LIGHT);
+            this.set(theme);
         } else {
-            this.setTheme(DEFAULT_THEME);
+            this.set(DEFAULT_THEME);
         }
     }
 

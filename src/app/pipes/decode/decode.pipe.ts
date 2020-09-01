@@ -1,11 +1,13 @@
-import { Pipe, PipeTransform, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import CryptoES from 'crypto-es';
-
-import { DecoderPasswordService } from '../services/decoder-password/decoder-password.service';
+import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
-const DELIMITER = '\%\%';
+import { DecoderPasswordService } from '../../services/decoder-password/decoder-password.service';
+
+// Escaped so schematic won't convert this value
+const DECODED_DELIMITER = '\%\%';
+const ENCODED_DELIMITER = '\#\#';
 
 @Pipe({
     name: 'decode',
@@ -49,15 +51,21 @@ export class DecodePipe implements PipeTransform, OnDestroy {
         ])
             .subscribe(([password, value]: string[]) => {
                 const lastValue = this.lastValue;
-                if (value.startsWith(DELIMITER) && value.endsWith(DELIMITER) && password) {
-                    const actualValue = value.split(DELIMITER).filter(Boolean)[0];
-                    try {
-                        this.lastValue = CryptoES.AES.decrypt(actualValue, password).toString(CryptoES.enc.Utf8);
-                    } catch {
-                        this.lastValue = value;
+                if (value.startsWith(ENCODED_DELIMITER) && value.endsWith(ENCODED_DELIMITER)) {
+                    if (password) {
+                        const actualValue = value.split(ENCODED_DELIMITER).filter(Boolean)[0];
+                        try {
+                            this.lastValue = CryptoES.AES.decrypt(actualValue, password).toString(CryptoES.enc.Utf8);
+                        } catch {
+                            this.lastValue = value;
+                        }
+                    } else {
+                        this.lastValue = `${value.substr(ENCODED_DELIMITER.length, 16)}...`;
                     }
+                } else if (value.startsWith(DECODED_DELIMITER) && value.endsWith(DECODED_DELIMITER)) {
+                    this.lastValue = value.split(DECODED_DELIMITER).filter(Boolean)[0];
                 } else {
-                    this.lastValue = value.split(DELIMITER).filter(Boolean)[0];
+                    this.lastValue = value;
                 }
                 if (lastValue !== this.lastValue) {
                     this.cdr.markForCheck();
