@@ -23,10 +23,11 @@ export function decodeSource(options: Schema): Rule {
                     const delimiterIndexEnd = content.indexOf(ENCODED_DELIMITER, nextDelimiterIndex + ENCODED_DELIMITER.length);
                     const phrase = content.slice(nextDelimiterIndex + ENCODED_DELIMITER.length, delimiterIndexEnd);
                     const encodedPhrase = CryptoJS.AES.decrypt(phrase, options.password).toString(CryptoJS.enc.Utf8);
-                    content = content.replace(
-                        `${ENCODED_DELIMITER}${phrase}${ENCODED_DELIMITER}`,
-                        `${DECODED_DELIMITER}${encodedPhrase}${DECODED_DELIMITER}`
-                    );
+
+                    const from = `${ENCODED_DELIMITER}${phrase}${ENCODED_DELIMITER}`;
+                    const to = `${DECODED_DELIMITER}${encodedPhrase}${DECODED_DELIMITER}`;
+                    content = content.replace(from, to);
+
                     const nextStartIndex = nextDelimiterIndex + encodedPhrase.length + DECODED_DELIMITER.length * 2;
                     nextDelimiterIndex = content.indexOf(ENCODED_DELIMITER, nextStartIndex);
                 }
