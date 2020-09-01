@@ -2,6 +2,7 @@
     <button 
         (click)="toggleTheme()"
         mat-button
+        matTooltip="Toggle theme"
         class="theme-button">
         <mat-icon>
             {{themeIcon$ | async}}
