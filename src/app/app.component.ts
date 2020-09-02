@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { DecoderPasswordService } from './services/decoder-password/decoder-password.service';
 import { ThemeService } from './services/theme/theme.service';
 
@@ -11,6 +14,8 @@ import { ThemeService } from './services/theme/theme.service';
     encapsulation: ViewEncapsulation.None, // For applying global theme class
 })
 export class AppComponent implements OnInit {
+
+    public readonly passwordUnavailable$ = this.passwordUnavailableChanges();
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -24,4 +29,10 @@ export class AppComponent implements OnInit {
         this.decoderPassword.initialize(this.activatedRoute);
     }
 
+    private passwordUnavailableChanges(): Observable<boolean> {
+        return this.decoderPassword.passwordChanges()
+            .pipe(
+                map((password: string) => !password),
+            );
+    }
 }
