@@ -19,7 +19,7 @@
         }
     }
 
-    @media (max-width: #{$width}) {
+    @media screen and (max-width: #{$width}) {
         height: auto;
         width: 100%;
         padding: 16px 16px 32px 16px;
@@ -38,13 +38,13 @@
         display: flex;
         margin-bottom: 16pt;
 
-        @media (max-width: #{$width}) {
+        @media screen and (max-width: #{$width}) {
             flex-direction: column-reverse;
         }
     }
 
     .personal-block {
-        @media (min-width: #{$width + 1px}) {
+        @media screen and (min-width: #{$width + 1px}) {
             margin-right: 16px;
         }
     }
@@ -68,15 +68,13 @@
     .photo-image {
         min-width: 150px;
         max-width: 150px;
+        margin-left: auto;
         display: block;
         font-size: 0;
         background: lightgray;
         
-        @media (min-width: #{$width + 1px}) {
-            margin-left: auto;
-        }
-
-        @media (max-width: #{$width}) {
+        @media screen and (max-width: #{$width}) {
+            margin-left: 0;
             margin-bottom: 16px;
         }
     }
@@ -88,7 +86,7 @@
         border-bottom: 1px solid;
 
         & > :not(:last-child) {
-            margin-bottom: 16pt;
+            margin-bottom: 14pt;
         }
 
         & > :last-child {
