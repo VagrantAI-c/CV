@@ -1,9 +1,17 @@
+@import 'tokens';
+
 .contacts-body {
     display: flex;
     align-items: center;
 
-    & > :not(:last-child) {
-        margin-right: 8pt;
+    @media (min-width: #{$width + 1px}) {
+        & > :not(:last-child) {
+            margin-right: 8pt;
+        }
+    }
+
+    @media (max-width: #{$width}) {
+        flex-wrap: wrap;
     }
     
     a {
@@ -31,6 +39,10 @@
             @media print {
                 display: none;
             }
+        }
+
+        @media (max-width: #{$width}) {
+            margin: 8px;
         }
 
         mat-icon {

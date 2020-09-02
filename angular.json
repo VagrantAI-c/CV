@@ -44,6 +44,11 @@
               "src/styles/theming.scss",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "extractCss": true
           },
           "configurations": {
