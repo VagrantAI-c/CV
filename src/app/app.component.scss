@@ -11,16 +11,21 @@
         top: 0;
         width: 100%;
 
+        @media screen {
+            margin-bottom: 11px; // *
+        }
+
         @media print {
             display: none;
         }
     }
 
-    .page-component {
-        @media screen {
-            margin-top: 11px; // *
-        }
+    .password-component {
+        display: block;
+        margin-bottom: 11px;
+    }
 
+    .page-component {
         @media print {
             width: 100%;
         }

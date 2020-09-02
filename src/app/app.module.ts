@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { PasswordBannerModule } from './components/password-banner/password-banner.module';
 import { PersonalModule } from './components/personal/personal.module';
 import { ToolbarModule } from './components/toolbar/toolbar.module';
 
@@ -16,6 +17,7 @@ import { ToolbarModule } from './components/toolbar/toolbar.module';
         RouterModule.forRoot([], {initialNavigation: true}),
         PersonalModule,
         ToolbarModule,
+        PasswordBannerModule,
     ],
     declarations: [
         AppComponent,
