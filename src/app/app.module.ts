@@ -5,8 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { Page1Module } from './components/page-1/page-1.module';
 import { PasswordBannerModule } from './components/password-banner/password-banner.module';
-import { PersonalModule } from './components/personal/personal.module';
 import { ToolbarModule } from './components/toolbar/toolbar.module';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { ToolbarModule } from './components/toolbar/toolbar.module';
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot([], {initialNavigation: true}),
-        PersonalModule,
+        Page1Module,
         ToolbarModule,
         PasswordBannerModule,
     ],

@@ -21,10 +21,6 @@
         // Also it should not excess row-block z-index
         z-index: 1;
 
-        @media screen {
-            margin-bottom: 11px; // *
-        }
-
         @media print {
             display: none;
         }
@@ -65,7 +61,7 @@
 
     .password-component {
         display: block;
-        margin-bottom: 11px;
+        margin-bottom: calc(16px - 3.75pt);
     }
 
     .page-component {

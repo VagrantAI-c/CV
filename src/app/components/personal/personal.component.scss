@@ -1,46 +1,12 @@
 @import 'tokens';
 
-// * - values taken from Google Docs
-
 .personal-body {
-    width: $width; // *
-    height: 1103px; // *, default height for single empty page
-    margin: 3.75pt; // *, so bottom box-shadow will be visible
-    padding: $padding; // *
-    background: white; // *
-
-    @media print {
-        width: 794px;
-        height: 1123px;
-        margin: 0;
-
-        &.mat-elevation-z2.mat-elevation-z2 { // Override shadow w/o !important
-            box-shadow: none;
-        }
-    }
-
+    display: flex;
+    min-width: 0;
+    margin-bottom: 16pt;
+    
     @media screen and (max-width: #{$width}) {
-        height: auto;
-        width: 100%;
-        padding: 16px 16px 32px 16px;
-        margin: 0;
-    }
-
-    .content {
-        font-size: 12pt;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        margin-bottom: 16pt;
-    }
-
-    .personal-section {
-        display: flex;
-        margin-bottom: 16pt;
-
-        @media screen and (max-width: #{$width}) {
-            flex-direction: column-reverse;
-        }
+        flex-direction: column-reverse;
     }
 
     .personal-block {
@@ -77,73 +43,5 @@
             margin-left: 0;
             margin-bottom: 16px;
         }
-    }
-
-    .skills-section {
-        margin-bottom: 16pt;
-        padding: 12pt 0;
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-
-        & > :not(:last-child) {
-            margin-bottom: 14pt;
-        }
-
-        & > :last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    .primary-skills {
-        width: 100%;
-        align-self: center;
-        display: flex;
-        justify-content: space-evenly;
-        text-align: center;
-        font-size: 20pt;
-
-        @media (max-width: #{$width}) {
-            flex-wrap: wrap;
-
-            span {
-                margin: 8px;
-            }
-        }
-    }
-
-    .sub-skills {
-        align-self: center;
-        text-align: center;
-        font-size: 16pt;
-        line-height: 20pt;
-    }
-
-    .goals-label {
-        margin-bottom: 8pt;
-    }
-
-    .goals-list {
-        margin: 0;
-    }
-
-    .bio-label {
-        margin-bottom: 8pt;
-        font-weight: 600;
-    }
-
-    .relations-block {
-        display: flex;
-        justify-content: center;
-        font-size: 12pt;
-        margin-bottom: 8pt;
-
-        & > :not(:last-child) {
-            margin-right: 24px;
-        }
-    }
-
-    .contact-label {
-        font-size: 10pt;
-        text-align: center;
     }
 }

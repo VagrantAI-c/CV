@@ -1,10 +1,10 @@
 @import '~@angular/material/theming';
 
-@mixin cv-personal-theme($theme) {
+@mixin cv-page-1-theme($theme) {
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    .personal-body {
+    .page-1-body {
         background-color: mat-color($background, card);
         transition: background-color 300ms ease;
         
