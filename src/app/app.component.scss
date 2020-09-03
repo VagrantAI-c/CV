@@ -71,6 +71,18 @@
         padding: $padding; // *
         background: white; // *
         font-size: 12pt;
+
+        @media screen {
+            &.collapsed {
+                height: auto;
+                margin-bottom: 0;
+                padding-bottom: 0;
+
+                &:not(.last-page) {
+                    border-bottom: 1px dotted;
+                }
+            }
+        }
     
         @media print {
             width: 794px;
@@ -88,5 +100,19 @@
             padding: 16px 16px 32px 16px;
             margin: 0;
         }
+    }
+
+    .page-component ~ .page-component.collapsed {
+        @media screen {
+            padding-top: 0;
+        }
+    }
+
+    .collapse-block {
+        width: $width;
+        height: 18pt;
+        margin: -12pt 0 -6pt 0;
+        cursor: pointer;
+        z-index: 1;
     }
 }

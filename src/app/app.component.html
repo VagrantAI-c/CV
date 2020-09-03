@@ -8,6 +8,22 @@
         *ngIf="passwordUnavailable$ | async"
         class="password-component">
     </cv-password-banner>
-    <cv-page-1 class="page-component mat-elevation-z2"></cv-page-1>
-    <cv-page-2 class="page-component mat-elevation-z2"></cv-page-2>
+    <cv-page-1 
+        [class.collapsed]="collapsed$ | async"
+        class="page-component mat-elevation-z2">
+    </cv-page-1>
+    <div 
+        (dblclick)="toggleCollapse()"
+        aria-hidden="true"
+        class="collapse-block">
+    </div>
+    <cv-page-2 
+        [class.collapsed]="collapsed$ | async"
+        class="page-component last-page mat-elevation-z2">
+    </cv-page-2>
+    <div 
+        (dblclick)="toggleCollapse()"
+        aria-hidden="true"
+        class="collapse-block">
+    </div>
 </section>

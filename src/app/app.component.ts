@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { DecoderPasswordService } from './services/decoder-password/decoder-password.service';
+import { PageCollapseService } from './services/page-collapse/page-collapse.service';
 import { ThemeService } from './services/theme/theme.service';
 
 @Component({
@@ -16,17 +17,25 @@ import { ThemeService } from './services/theme/theme.service';
 export class AppComponent implements OnInit {
 
     public readonly passwordUnavailable$ = this.passwordUnavailableChanges();
+    public readonly collapsed$ = this.pageCollapse.collapsedChanges();
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private decoderPassword: DecoderPasswordService,
         private theme: ThemeService,
+        private pageCollapse: PageCollapseService,
     ) {
     }
 
     public ngOnInit(): void {
         this.theme.initialize();
+        this.pageCollapse.initialize();
         this.decoderPassword.initialize(this.activatedRoute);
+    }
+
+    public toggleCollapse(): void {
+        console.log('collapse');
+        this.pageCollapse.toggle();
     }
 
     private passwordUnavailableChanges(): Observable<boolean> {
