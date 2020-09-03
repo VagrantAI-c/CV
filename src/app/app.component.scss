@@ -65,8 +65,28 @@
     }
 
     .page-component {
+        width: $width; // *
+        height: 1103px; // *, default height for single empty page
+        margin: 0 3.75pt 7.5pt 3.75pt; // *
+        padding: $padding; // *
+        background: white; // *
+        font-size: 12pt;
+    
         @media print {
+            width: 794px;
+            height: 1123px;
+            margin: 0;
+    
+            &.mat-elevation-z2.mat-elevation-z2 { // Override shadow w/o !important
+                box-shadow: none;
+            }
+        }
+    
+        @media screen and (max-width: #{$width}) {
+            height: auto;
             width: 100%;
+            padding: 16px 16px 32px 16px;
+            margin: 0;
         }
     }
 }

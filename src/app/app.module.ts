@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { Page1Module } from './components/page-1/page-1.module';
+import { Page2Module } from './components/page-2/page-2.module';
 import { PasswordBannerModule } from './components/password-banner/password-banner.module';
 import { ToolbarModule } from './components/toolbar/toolbar.module';
 
@@ -16,6 +17,7 @@ import { ToolbarModule } from './components/toolbar/toolbar.module';
         HttpClientModule,
         RouterModule.forRoot([], {initialNavigation: true}),
         Page1Module,
+        Page2Module,
         ToolbarModule,
         PasswordBannerModule,
     ],

@@ -2,22 +2,18 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { DecodeModule } from '../../pipes/decode/decode.module';
-import { BioModule } from '../bio/bio.module';
-import { PersonalModule } from '../personal/personal.module';
-import { Page1Component } from './page-1.component';
+import { SeeAlsoComponent } from './see-also.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        BioModule,
         DecodeModule,
-        PersonalModule,
     ],
     declarations: [
-        Page1Component,
+        SeeAlsoComponent,
     ],
     exports: [
-        Page1Component,
+        SeeAlsoComponent,
     ],
 })
-export class Page1Module {}
+export class SeeAlsoModule {}

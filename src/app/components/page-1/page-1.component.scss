@@ -3,30 +3,6 @@
 // * - values taken from Google Docs
 
 .page-1-body {
-    width: $width; // *
-    height: 1103px; // *, default height for single empty page
-    margin: 3.75pt; // *, so bottom box-shadow will be visible
-    padding: $padding; // *
-    background: white; // *
-    font-size: 12pt;
-
-    @media print {
-        width: 794px;
-        height: 1123px;
-        margin: 0;
-
-        &.mat-elevation-z2.mat-elevation-z2 { // Override shadow w/o !important
-            box-shadow: none;
-        }
-    }
-
-    @media screen and (max-width: #{$width}) {
-        height: auto;
-        width: 100%;
-        padding: 16px 16px 32px 16px;
-        margin: 0;
-    }
-
     .content {
         display: flex;
         flex-direction: column;
@@ -93,10 +69,5 @@
     .bio-label {
         margin-bottom: 8pt;
         font-weight: 600;
-    }
-
-    .contact-label {
-        font-size: 10pt;
-        text-align: center;
     }
 }

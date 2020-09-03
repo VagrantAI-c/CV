@@ -3,21 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { DecodeModule } from '../../pipes/decode/decode.module';
 import { BioModule } from '../bio/bio.module';
-import { PersonalModule } from '../personal/personal.module';
-import { Page1Component } from './page-1.component';
+import { RelationsModule } from '../relations/relations.module';
+import { SeeAlsoModule } from '../see-also/see-also.module';
+import { Page2Component } from './page-2.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        BioModule,
         DecodeModule,
-        PersonalModule,
+        BioModule,
+        RelationsModule,
+        SeeAlsoModule,
     ],
     declarations: [
-        Page1Component,
+        Page2Component,
     ],
     exports: [
-        Page1Component,
+        Page2Component,
     ],
 })
-export class Page1Module {}
+export class Page2Module {}
