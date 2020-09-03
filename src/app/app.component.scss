@@ -1,3 +1,5 @@
+@import 'tokens';
+
 // * - values taken from Google Docs
 
 .app-body {
@@ -6,10 +8,18 @@
     flex-direction: column;
     align-items: center;
 
-    .toolbar-component {
+    .sticky-block {
+        // Sticky shadow source from https://stijndewitt.com/2018/06/12/pure-css-drop-shadow-on-scroll/
+        $block-height: $toolbar-height; // Height of this sticky block with border included
+        $pseudo-block-height: 16px;
+
         position: sticky;
-        top: 0;
+        top: -$pseudo-block-height;
         width: 100%;
+        height: $block-height + $pseudo-block-height;
+        // Sticky block z-index should be below header's and above page content.
+        // Also it should not excess row-block z-index
+        z-index: 1;
 
         @media screen {
             margin-bottom: 11px; // *
@@ -18,7 +28,40 @@
         @media print {
             display: none;
         }
+
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            position: sticky;
+            height: $pseudo-block-height;
+        }
+
+        // Shadow block
+        &::before {
+            top: $toolbar-height - $pseudo-block-height;
+            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+            background: black;
+        }
+
+        // Fade gradient, so shadow won't appear instantly, only on scroll
+        &::after {
+            top: 0;
+            left: 0;
+            // Background-color located in theme style
+            z-index: 2;
+        }
+
+        .toolbar-component {
+            display: block;
+            position: sticky;
+            top: 0;
+            height: $block-height;
+            margin-top: -$pseudo-block-height;
+            z-index: 3;
+        }
     }
+
 
     .password-component {
         display: block;

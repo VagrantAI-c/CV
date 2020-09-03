@@ -1,7 +1,9 @@
 <section 
     aria-label="Curriculum Vitae"
     class="app-body">
-    <cv-toolbar class="toolbar-component"></cv-toolbar>
+    <div class="sticky-block">
+        <cv-toolbar class="toolbar-component"></cv-toolbar>
+    </div>
     <cv-password-banner 
         *ngIf="passwordUnavailable$ | async"
         class="password-component">

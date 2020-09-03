@@ -3,17 +3,27 @@
 @mixin cv-app-theme($theme) {
     $is-dark: map-get($theme, is-dark);
     $foreground: map-get($theme, foreground);
+    $background-color: if($is-dark, #272727, #f8f9fa); // *
 
     .app-body {
         transition: background-color 300ms ease, color 300ms ease;
         color: mat-color($foreground, text);
 
         @media screen {
-            background-color: if($is-dark, #272727, rgb(248, 249, 250)); // *
+            background-color: $background-color;
         }
 
         @media (prefers-reduced-motion: reduce) {
             transition: none;
+        }
+
+        .sticky-block::after {
+            background: linear-gradient(
+                #{$background-color} 10%, 
+                rgba($background-color, 0.8) 50%, 
+                rgba($background-color, 0.4) 70%, 
+                rgba($background-color, 0),
+            ); 
         }
     }
 }
