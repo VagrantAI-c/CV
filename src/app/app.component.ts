@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { DecoderPasswordService } from './services/decoder-password/decoder-password.service';
 import { PageCollapseService } from './services/page-collapse/page-collapse.service';
 import { ThemeService } from './services/theme/theme.service';
+import { PageRotationService } from './services/page-rotation/page-rotation.service';
 
 @Component({
     selector: 'cv-app',
@@ -18,12 +19,14 @@ export class AppComponent implements OnInit {
 
     public readonly passwordUnavailable$ = this.passwordUnavailableChanges();
     public readonly collapsed$ = this.pageCollapse.collapsedChanges();
+    public readonly flipped$ = this.pageRotation.isRotatedChanges();
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private decoderPassword: DecoderPasswordService,
         private theme: ThemeService,
         private pageCollapse: PageCollapseService,
+        private pageRotation: PageRotationService,
     ) {
     }
 
@@ -34,7 +37,6 @@ export class AppComponent implements OnInit {
     }
 
     public toggleCollapse(): void {
-        console.log('collapse');
         this.pageCollapse.toggle();
     }
 

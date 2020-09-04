@@ -58,35 +58,43 @@
         }
     }
 
-
     .password-component {
         display: block;
         margin-bottom: calc(16px - 3.75pt);
     }
 
-    .page-component {
-        width: $width; // *
-        height: 1103px; // *, default height for single empty page
+    .card-block {
+        width: $width;
+        height: $height;
+        display: flex;
         margin: 0 3.75pt 7.5pt 3.75pt; // *
-        padding: $padding; // *
-        background: white; // *
+        padding: $padding;
         font-size: 12pt;
+        transition: transform 600ms ease;
+        transform-style: preserve-3d;
+
+        & > * {
+            backface-visibility: hidden;
+        }
 
         @media screen {
+            &.flipped {
+                transform: rotateY(180deg);
+            }
+
             &.collapsed {
                 height: auto;
-                margin-bottom: 0;
                 padding-bottom: 0;
-
+                
                 &:not(.last-page) {
+                    margin-bottom: 0;
                     border-bottom: 1px dotted;
                 }
             }
         }
     
         @media print {
-            width: 794px;
-            height: 1123px;
+            width: $raw-width;
             margin: 0;
     
             &.mat-elevation-z2.mat-elevation-z2 { // Override shadow w/o !important
@@ -96,15 +104,60 @@
     
         @media screen and (max-width: #{$width}) {
             height: auto;
+            min-height: 1123px;
             width: 100%;
             padding: 16px 16px 32px 16px;
-            margin: 0;
         }
     }
 
-    .page-component ~ .page-component.collapsed {
+    .card-block ~ .card-block.collapsed {
         @media screen {
             padding-top: 0;
+        }
+    }
+
+    .backflip-block {
+        position: absolute;
+        right: 0;
+        width: 100%;
+        padding: 16px;
+        transform: rotateY(180deg);
+
+        @media print {
+            display: none;
+        }
+
+        &.page-1 {
+            top: $padding;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & > :not(:last-child) {
+                margin-bottom: 8pt;
+            }
+
+            @media print {
+                display: none;
+                position: static;
+                height: 0;
+            }
+        }
+
+        &.page-2 {
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: center;
+            font-size: 10pt;
+
+            @media print {
+                display: none;
+                position: static;
+                height: 0;
+            }
         }
     }
 
@@ -114,5 +167,26 @@
         margin: -12pt 0 -6pt 0;
         cursor: pointer;
         z-index: 1;
+
+        &.last {
+            height: 12pt;
+            margin-bottom: 0;
+        }
+
+        @media print {
+            display: none;
+        }
+
+        @media screen and (max-width: #{$width}) {
+            width: 100%;
+        }
+    }
+
+    .ozon-image {
+        max-width: 100%;
+    }
+
+    .ozon-label {
+        text-align: center;
     }
 }

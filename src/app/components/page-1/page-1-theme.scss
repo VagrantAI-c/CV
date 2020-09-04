@@ -5,13 +5,6 @@
     $foreground: map-get($theme, foreground);
 
     .page-1-body {
-        background-color: mat-color($background, card);
-        transition: background-color 300ms ease;
-        
-        @media (prefers-reduced-motion: reduce) {
-            transition: none;
-        }
-
         .skills-section {
             border-color: mat-color($foreground, divider);
             transition: border-color 300ms ease;

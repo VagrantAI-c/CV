@@ -9,6 +9,7 @@ import { Page1Module } from './components/page-1/page-1.module';
 import { Page2Module } from './components/page-2/page-2.module';
 import { PasswordBannerModule } from './components/password-banner/password-banner.module';
 import { ToolbarModule } from './components/toolbar/toolbar.module';
+import { DecodeModule } from './pipes/decode/decode.module';
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import { ToolbarModule } from './components/toolbar/toolbar.module';
         Page2Module,
         ToolbarModule,
         PasswordBannerModule,
+        DecodeModule,
     ],
     declarations: [
         AppComponent,

@@ -4,12 +4,16 @@
     width: 100%;
     height: $toolbar-height;
     display: flex;
+    justify-content: flex-end;
     border-bottom: 1px solid;
     padding: 0 24px;
 
+    & > :not(:last-child) {
+        margin-right: 4px;
+    }
+
     .theme-button {
         min-width: $toolbar-height;
-        margin-left: auto;
         padding: 0;
     }
 }
