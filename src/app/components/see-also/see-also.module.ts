@@ -2,20 +2,18 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { DecodeModule } from '../../pipes/decode/decode.module';
-import { PersonalComponent } from './personal.component';
-import { ContactsModule } from '../contacts/contacts.module';
+import { SeeAlsoComponent } from './see-also.component';
 
 @NgModule({
     imports: [
         CommonModule,
         DecodeModule,
-        ContactsModule,
     ],
     declarations: [
-        PersonalComponent,
+        SeeAlsoComponent,
     ],
     exports: [
-        PersonalComponent,
+        SeeAlsoComponent,
     ],
 })
-export class PersonalModule {}
+export class SeeAlsoModule {}

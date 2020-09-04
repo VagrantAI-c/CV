@@ -1,10 +1,48 @@
 <section 
     aria-label="Curriculum Vitae"
     class="app-body">
-    <cv-toolbar class="toolbar-component"></cv-toolbar>
+    <div class="sticky-block">
+        <cv-toolbar class="toolbar-component"></cv-toolbar>
+    </div>
     <cv-password-banner 
         *ngIf="passwordUnavailable$ | async"
         class="password-component">
     </cv-password-banner>
-    <cv-personal class="page-component"></cv-personal>
+
+    <!-- Page 1 -->
+    <div
+        [class.collapsed]="collapsed$ | async"
+        [class.flipped]="flipped$ | async" 
+        class="card-block mat-elevation-z2">
+        <cv-page-1></cv-page-1>
+        <div class="backflip-block page-1">
+            <img 
+                [src]="'##U2FsdGVkX18WBlMG+OVp5ijV459teS7k+tLMH214w0rOG12vgSxLDhFtFo3QebBETVccQKSUfSL0njCVdKQk+M/z8Mg6rBCvij3r+7fZb065Ni1pMkPsSJF4fLZT+86siGT1ER3I5DHzNoNsDuVMkQ==##' | decode"
+                class="ozon-image">
+            <span class="ozon-label">
+                {{'##U2FsdGVkX19wOwcbF0LI2uXBGs7qklhkQAbnYR2u8C4beselSOOYaT29NF4xCpljtAlUvkqYKRbI9QtwcCw/55mWNPx1wCO9dYtUW1wDtAPbaMuK6M4kQw0WgQdoBhhoqkKUac6WQxsUbw2/OHy42w==##' | decode}}
+            </span>
+        </div>
+    </div>
+    <div 
+        (dblclick)="toggleCollapse()"
+        aria-hidden="true"
+        class="collapse-block">
+    </div>
+
+    <!-- Page 2 -->
+    <div
+        [class.collapsed]="collapsed$ | async"
+        [class.flipped]="flipped$ | async" 
+        class="card-block last-page mat-elevation-z2">
+        <cv-page-2></cv-page-2>
+        <div class="backflip-block page-2">
+            Thanks for scrolling to this point. You're awesome! 😎👍
+        </div>
+    </div>
+    <div 
+        (dblclick)="toggleCollapse()"
+        aria-hidden="true"
+        class="collapse-block last">
+    </div>
 </section>

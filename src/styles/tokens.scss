@@ -1,2 +1,7 @@
+// * - values taken from Google Docs
+
 $padding: 96px; // *, page padding
-$width: 794px + $padding * 2; // *, page width
+$height: 1103px; // *, default page height
+$raw-width: 794px;
+$width: $raw-width + $padding * 2; // *, page width
+$toolbar-height: 35px; // *

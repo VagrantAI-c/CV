@@ -1,3 +1,5 @@
+@import 'tokens';
+
 // * - values taken from Google Docs
 
 .app-body {
@@ -6,28 +8,185 @@
     flex-direction: column;
     align-items: center;
 
-    .toolbar-component {
-        position: sticky;
-        top: 0;
-        width: 100%;
+    .sticky-block {
+        // Sticky shadow source from https://stijndewitt.com/2018/06/12/pure-css-drop-shadow-on-scroll/
+        $block-height: $toolbar-height; // Height of this sticky block with border included
+        $pseudo-block-height: 16px;
 
-        @media screen {
-            margin-bottom: 11px; // *
-        }
+        position: sticky;
+        top: -$pseudo-block-height;
+        width: 100%;
+        height: $block-height + $pseudo-block-height;
+        // Sticky block z-index should be below header's and above page content.
+        // Also it should not excess row-block z-index
+        z-index: 1;
 
         @media print {
             display: none;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            position: sticky;
+            height: $pseudo-block-height;
+        }
+
+        // Shadow block
+        &::before {
+            top: $toolbar-height - $pseudo-block-height;
+            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+            background: black;
+        }
+
+        // Fade gradient, so shadow won't appear instantly, only on scroll
+        &::after {
+            top: 0;
+            left: 0;
+            // Background-color located in theme style
+            z-index: 2;
+        }
+
+        .toolbar-component {
+            display: block;
+            position: sticky;
+            top: 0;
+            height: $block-height;
+            margin-top: -$pseudo-block-height;
+            z-index: 3;
         }
     }
 
     .password-component {
         display: block;
-        margin-bottom: 11px;
+        margin-bottom: calc(16px - 3.75pt);
     }
 
-    .page-component {
+    .card-block {
+        width: $width;
+        height: $height;
+        display: flex;
+        margin: 0 3.75pt 7.5pt 3.75pt; // *
+        padding: $padding;
+        font-size: 12pt;
+        transition: transform 600ms ease;
+        transform-style: preserve-3d;
+
+        & > * {
+            backface-visibility: hidden;
+        }
+
+        @media screen {
+            &.flipped {
+                transform: rotateY(180deg);
+            }
+
+            &.collapsed {
+                height: auto;
+                padding-bottom: 0;
+                
+                &:not(.last-page) {
+                    margin-bottom: 0;
+                    border-bottom: 1px dotted;
+                }
+            }
+        }
+    
         @media print {
+            width: $raw-width;
+            margin: 0;
+    
+            &.mat-elevation-z2.mat-elevation-z2 { // Override shadow w/o !important
+                box-shadow: none;
+            }
+        }
+    
+        @media screen and (max-width: #{$width}) {
+            height: auto;
+            min-height: 1123px;
+            width: 100%;
+            padding: 16px 16px 32px 16px;
+        }
+    }
+
+    .card-block ~ .card-block.collapsed {
+        @media screen {
+            padding-top: 0;
+        }
+    }
+
+    .backflip-block {
+        position: absolute;
+        right: 0;
+        width: 100%;
+        padding: 16px;
+        transform: rotateY(180deg);
+
+        @media print {
+            display: none;
+        }
+
+        &.page-1 {
+            top: $padding;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & > :not(:last-child) {
+                margin-bottom: 8pt;
+            }
+
+            @media print {
+                display: none;
+                position: static;
+                height: 0;
+            }
+        }
+
+        &.page-2 {
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: center;
+            font-size: 10pt;
+
+            @media print {
+                display: none;
+                position: static;
+                height: 0;
+            }
+        }
+    }
+
+    .collapse-block {
+        width: $width;
+        height: 18pt;
+        margin: -12pt 0 -6pt 0;
+        cursor: pointer;
+        z-index: 1;
+
+        &.last {
+            height: 12pt;
+            margin-bottom: 0;
+        }
+
+        @media print {
+            display: none;
+        }
+
+        @media screen and (max-width: #{$width}) {
             width: 100%;
         }
+    }
+
+    .ozon-image {
+        max-width: 100%;
+    }
+
+    .ozon-label {
+        text-align: center;
     }
 }

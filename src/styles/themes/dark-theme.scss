@@ -11,11 +11,13 @@
     @include angular-material-theme($theme);
     @include cv-theme($theme);
 
-    a:link {
-        color: #a7a7ff;
-    }
-
-    a:visited {
-        color: #cc98fb;
+    @media screen {
+        a:link {
+            color: #a7a7ff;
+        }
+    
+        a:visited {
+            color: #cc98fb;
+        }
     }
 }

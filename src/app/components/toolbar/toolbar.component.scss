@@ -1,15 +1,19 @@
-// * - values taken from Google Docs
+@import 'tokens';
 
 .toolbar-body {
     width: 100%;
-    height: 35px; // *
+    height: $toolbar-height;
     display: flex;
+    justify-content: flex-end;
     border-bottom: 1px solid;
     padding: 0 24px;
 
+    & > :not(:last-child) {
+        margin-right: 4px;
+    }
+
     .theme-button {
-        min-width: 35px; // *
-        margin-left: auto;
-        padding: 0; // *
+        min-width: $toolbar-height;
+        padding: 0;
     }
 }

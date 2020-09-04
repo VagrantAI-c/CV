@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { PageRotationService } from '../../services/page-rotation/page-rotation.service';
 import { Theme } from '../../services/theme/models/theme.enum';
 import { ThemeService } from '../../services/theme/theme.service';
 
@@ -18,7 +19,12 @@ export class ToolbarComponent {
 
     constructor(
         private theme: ThemeService,
+        private pageRotation: PageRotationService,
     ) {
+    }
+
+    public toggleRotation(): void {
+        this.pageRotation.flip();
     }
 
     public toggleTheme(): void {

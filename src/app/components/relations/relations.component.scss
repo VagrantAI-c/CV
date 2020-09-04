@@ -1,0 +1,10 @@
+.relations-body {
+    display: flex;
+    justify-content: center;
+    font-size: 12pt;
+    margin-bottom: 8pt;
+
+    & > :not(:last-child) {
+        margin-right: 24px;
+    }
+}

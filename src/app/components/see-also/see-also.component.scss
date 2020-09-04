@@ -1,0 +1,10 @@
+.see-also-body {
+    .carousel-label {
+        display: block; // Anchors should be block in order for margin to work
+        margin-bottom: 8pt;
+    }
+
+    .inner-list {
+        margin: 0 0 8pt 0;
+    }
+}

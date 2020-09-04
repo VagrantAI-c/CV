@@ -1,0 +1,18 @@
+.page-2-body {
+    .content {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        margin-bottom: 16pt;
+    }
+
+    .see-also-label {
+        margin-bottom: 8pt;
+        font-weight: 600;
+    }
+    
+    .contact-label {
+        font-size: 10pt;
+        text-align: center;
+    }
+}

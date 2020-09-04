@@ -2,18 +2,48 @@
 
 @mixin cv-app-theme($theme) {
     $is-dark: map-get($theme, is-dark);
+    $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
+    $default-color: #f8f9fa;
+    $background-color: if($is-dark, #272727, $default-color); // *
 
     .app-body {
-        transition: background-color 300ms ease, color 300ms ease;
         color: mat-color($foreground, text);
+        transition: background-color 300ms ease, color 300ms ease;
 
         @media screen {
-            background-color: if($is-dark, #272727, rgb(248, 249, 250)); // *
+            background-color: $background-color;
+        }
+
+        @media print {
+            color: black;
         }
 
         @media (prefers-reduced-motion: reduce) {
             transition: none;
+        }
+
+        .sticky-block::after {
+            background-color: linear-gradient(
+                #{$background-color} 10%, 
+                rgba($background-color, 0.8) 50%, 
+                rgba($background-color, 0.4) 70%, 
+                rgba($background-color, 0),
+            ); 
+            transition: background-color 300ms ease;
+        }
+
+        .card-block {
+            background-color: mat-color($background, card);
+            transition: background-color 300ms ease, transform 600ms ease;
+
+            @media print {
+                background-color: $default-color;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
         }
     }
 }
