@@ -79,8 +79,8 @@
 
         @media screen {
             &.flipped {
-                // translateZ is Safari fix so backface would be visible on flipped state
-                transform: rotateY(180deg) translateZ(1px);
+                // 0.01 is Safari fix so backface would be visible on flipped state
+                transform: rotateY(180.01deg);
             }
 
             &.collapsed {
