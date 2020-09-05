@@ -72,7 +72,6 @@
         font-size: 12pt;
         transition: transform 600ms ease;
         transform-style: preserve-3d;
-        perspective: 600;
 
         & > * {
             backface-visibility: hidden;
@@ -80,7 +79,8 @@
 
         @media screen {
             &.flipped {
-                transform: rotateY(180deg);
+                // translateZ is Safari fix so backface would be visible on flipped state
+                transform: rotateY(180deg) translateZ(1px);
             }
 
             &.collapsed {
@@ -115,12 +115,6 @@
         @media screen {
             padding-top: 0;
         }
-    }
-
-    .page-component {
-        transform-style: preserve-3d;
-        z-index: 2;
-        transform: rotateY(0deg);
     }
 
     .backflip-block {
