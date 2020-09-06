@@ -49,7 +49,7 @@ export class DecodePipe implements PipeTransform, OnDestroy {
                     distinctUntilChanged(),
                 ),
         ])
-            .subscribe(([password, value]: string[]) => {
+            .subscribe(([password, value]: [string | null, string]) => {
                 const lastValue = this.lastValue;
                 if (value.startsWith(ENCODED_DELIMITER) && value.endsWith(ENCODED_DELIMITER)) {
                     if (password) {
@@ -67,6 +67,7 @@ export class DecodePipe implements PipeTransform, OnDestroy {
                 } else {
                     this.lastValue = value;
                 }
+
                 if (lastValue !== this.lastValue) {
                     this.cdr.markForCheck();
                 }

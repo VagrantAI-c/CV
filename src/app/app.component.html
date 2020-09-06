@@ -5,7 +5,7 @@
         <cv-toolbar class="toolbar-component"></cv-toolbar>
     </div>
     <cv-password-banner 
-        *ngIf="passwordUnavailable$ | async"
+        *ngIf="shouldShowPasswordBanner$ | async"
         class="password-component">
     </cv-password-banner>
 
@@ -17,10 +17,10 @@
         <cv-page-1></cv-page-1>
         <div class="backflip-block page-1">
             <img 
-                [src]="'##U2FsdGVkX1/8H5BFYyRb36RGBGYJp8bXq+lxMJQCy9AaCxm58xqnMaQCsAhR4mgZc8DNvwiACObDf9rqmgJrWCle3lgCrwupv9g0lJnsq9ZlKdVE+XJiPQK070rUHc3Dlo/ZW4gJvTWZvpvuvxgWNA==##' | decode"
+                [src]="'##U2FsdGVkX19+5Oyj1mDdKCkj5f0KgE+h/gmSxoOk7vTFoZLJG74zMtsHFm5SRSCrciA29nMwyC+LTHboGlSjp4/LMqQpMBapO0/tp9Es07Ttgr1b6wJCS6uBX9zCy19WYWptYNvIjB0Ef+iQJncCmg==##' | decode"
                 class="ozon-image">
             <span class="ozon-label">
-                {{'##U2FsdGVkX18WeROqwPrmGqkeOI7rfL14ATWny68t53Ba++e7l7B3aEZXwFI1AKATA6YOM8WU6Et8BJunsDjjbDQqqqcvL0vgGGOV6qjDTwhSxWKVrZuwhRKLXaSOyIXVA9PT9749LtK9TAfH3JmTxg==##' | decode}}
+                {{'##U2FsdGVkX1/WP9uZGWvcf0AmUlB3CgdR8dfmp2B1Y3j8rSzWM0nIs3JqCaJF3I0hNrlNB0lU2E6p/U1S9BCu4Pnlq7Y+MqbSTgvIZbkFpEBI9iOBHXmImC6d6GS40lib1f8DBWiEmcJ91FQqzAlD4g==##' | decode}}
             </span>
         </div>
     </div>

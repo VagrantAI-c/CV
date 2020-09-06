@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 import { BehaviorSubject, merge, Observable, of } from 'rxjs';
 import { distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
+import CryptoES from 'crypto-es';
 
 @Injectable({
     providedIn: 'root',
@@ -19,10 +20,24 @@ export class DecoderPasswordService {
         this.activatedRoute$.next(activatedRoute);
     }
 
+    public passwordValidChanges(): Observable<boolean> {
+        return this.passwordChanges()
+            .pipe(
+                // I still wonder whether this is a good case to leave
+                // encoded phrase as is. I don't have enough security
+                // knowledge to determine whether real password can be
+                // compromised this way.
+                map((password: string | null) => password
+                    ? CryptoES.AES.decrypt('##U2FsdGVkX186sCZisosQrVXC1GlviJmF4M/byEy5U9uQfKaXEjc9ZJFrLhHEE/90##', password).toString(CryptoES.enc.Utf8) === 'Red, brown and green'
+                    : false
+                ),
+            );
+    }
+
     /**
      * Returns stream of password to decode AES hashes
      */
-    public passwordChanges(): Observable<string> {
+    public passwordChanges(): Observable<string | null> {
         return this.activatedRoute$
             .pipe(
                 filter<ActivatedRoute | null>(Boolean),

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { DecoderPasswordService } from './services/decoder-password/decoder-password.service';
@@ -17,7 +17,7 @@ import { PageRotationService } from './services/page-rotation/page-rotation.serv
 })
 export class AppComponent implements OnInit {
 
-    public readonly passwordUnavailable$ = this.passwordUnavailableChanges();
+    public readonly shouldShowPasswordBanner$ = this.shouldShowPasswordBannerChanges();
     public readonly collapsed$ = this.pageCollapse.collapsedChanges();
     public readonly flipped$ = this.pageRotation.isRotatedChanges();
 
@@ -40,10 +40,13 @@ export class AppComponent implements OnInit {
         this.pageCollapse.toggle();
     }
 
-    private passwordUnavailableChanges(): Observable<boolean> {
-        return this.decoderPassword.passwordChanges()
+    private shouldShowPasswordBannerChanges(): Observable<boolean> {
+        return combineLatest([
+            this.decoderPassword.passwordChanges(),
+            this.decoderPassword.passwordValidChanges(),
+        ])
             .pipe(
-                map((password: string) => !password),
+                map(([password, passwordValid]: [string | null, boolean]) => !password || !passwordValid),
             );
     }
 }
