@@ -31,7 +31,7 @@ export class DecoderPasswordService {
                 map((password: string | null) => password
                     // Encoded phrase might take too much symbols, so linting is disabled for next line
                     // tslint:disable-next-line: max-line-length
-                    ? decode('##U2FsdGVkX18dXPUOpYjq5S7O73FCDutI8EsvFPRE512RJ/JlCLBL4D2cdw5qimta##', password) === 'Red, brown and green'
+                    ? decode('##U2FsdGVkX18bK/vzSmaN2i7h0GqkxJBOCElx7JcYZorFdEeQ/XSFbvSPo7VzXQMO##', password) === 'Red, brown and green'
                     : false
                 ),
             );
