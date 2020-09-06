@@ -42,7 +42,8 @@
         &::after {
             top: 0;
             left: 0;
-            // Background-color located in theme style
+            // Background located in theme style
+            transition: background 300ms ease;
             z-index: 2;
         }
 
