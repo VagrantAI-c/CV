@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 import { BehaviorSubject, merge, Observable, of } from 'rxjs';
 import { distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
-import CryptoES from 'crypto-es';
+
+import { decode } from '../../helpers/decode';
 
 @Injectable({
     providedIn: 'root',
@@ -28,9 +29,9 @@ export class DecoderPasswordService {
                 // knowledge to determine whether real password can be
                 // compromised this way.
                 map((password: string | null) => password
-                    // Encoded phrase takes too much symbols, so linting is disabled for next line
+                    // Encoded phrase might take too much symbols, so linting is disabled for next line
                     // tslint:disable-next-line: max-line-length
-                    ? CryptoES.AES.decrypt('##U2FsdGVkX1+ImhAByHvInz6Tykhl6vn5AKCItHgNOBRGa+drGRwK4jNMq1MgLOQ7##', password).toString(CryptoES.enc.Utf8) === 'Red, brown and green'
+                    ? decode('##U2FsdGVkX18dXPUOpYjq5S7O73FCDutI8EsvFPRE512RJ/JlCLBL4D2cdw5qimta##', password) === 'Red, brown and green'
                     : false
                 ),
             );
@@ -54,5 +55,4 @@ export class DecoderPasswordService {
                 distinctUntilChanged(),
             );
     }
-
 }
