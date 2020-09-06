@@ -28,7 +28,9 @@ export class DecoderPasswordService {
                 // knowledge to determine whether real password can be
                 // compromised this way.
                 map((password: string | null) => password
-                    ? CryptoES.AES.decrypt('##U2FsdGVkX186sCZisosQrVXC1GlviJmF4M/byEy5U9uQfKaXEjc9ZJFrLhHEE/90##', password).toString(CryptoES.enc.Utf8) === 'Red, brown and green'
+                    // Encoded phrase takes too much symbols, so linting is disabled for next line
+                    // tslint:disable-next-line: max-line-length
+                    ? CryptoES.AES.decrypt('##U2FsdGVkX1+ImhAByHvInz6Tykhl6vn5AKCItHgNOBRGa+drGRwK4jNMq1MgLOQ7##', password).toString(CryptoES.enc.Utf8) === 'Red, brown and green'
                     : false
                 ),
             );
