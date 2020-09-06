@@ -1,13 +1,11 @@
 import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import CryptoES from 'crypto-es';
 import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
+import { decode } from '../../helpers/decode';
+import { ENCODED_DELIMITER, isEncodedString } from '../../helpers/is-encoded-string';
+import { DECODED_DELIMITER, isDecodedString } from '../../helpers/is-decoded-string';
 import { DecoderPasswordService } from '../../services/decoder-password/decoder-password.service';
-
-// Escaped so schematic won't convert this value
-const DECODED_DELIMITER = '\%\%';
-const ENCODED_DELIMITER = '\#\#';
 
 @Pipe({
     name: 'decode',
@@ -51,18 +49,14 @@ export class DecodePipe implements PipeTransform, OnDestroy {
         ])
             .subscribe(([password, value]: [string | null, string]) => {
                 const lastValue = this.lastValue;
-                if (value.startsWith(ENCODED_DELIMITER) && value.endsWith(ENCODED_DELIMITER)) {
+                if (isEncodedString(value)) {
                     if (password) {
-                        const actualValue = value.split(ENCODED_DELIMITER).filter(Boolean)[0];
-                        try {
-                            this.lastValue = CryptoES.AES.decrypt(actualValue, password).toString(CryptoES.enc.Utf8);
-                        } catch {
-                            this.lastValue = value;
-                        }
-                    } else {
+                        this.lastValue = decode(value, password);
+                    }
+                    if (this.lastValue === value || !this.lastValue) {
                         this.lastValue = `${value.substr(ENCODED_DELIMITER.length, 16)}...`;
                     }
-                } else if (value.startsWith(DECODED_DELIMITER) && value.endsWith(DECODED_DELIMITER)) {
+                } else if (isDecodedString(value)) {
                     this.lastValue = value.split(DECODED_DELIMITER).filter(Boolean)[0];
                 } else {
                     this.lastValue = value;
