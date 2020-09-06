@@ -23,14 +23,21 @@
             transition: none;
         }
 
-        .sticky-block::after {
-            background-color: linear-gradient(
-                #{$background-color} 10%, 
-                rgba($background-color, 0.8) 50%, 
-                rgba($background-color, 0.4) 70%, 
-                rgba($background-color, 0),
-            ); 
-            transition: background-color 300ms ease;
+        .sticky-block {
+            &::before {
+                box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+                background: black;
+            }
+
+            &::after {
+                background: linear-gradient(
+                    rgba($background-color, 0.99) 10%, 
+                    rgba($background-color, 0.8) 50%, 
+                    rgba($background-color, 0.4) 70%, 
+                    rgba($background-color, 0),
+                ); 
+                transition: background-color 300ms ease;
+            }
         }
 
         .card-block {
