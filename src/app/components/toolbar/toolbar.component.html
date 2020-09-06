@@ -3,6 +3,7 @@
         (click)="toggleRotation()"
         mat-button
         matTooltip="Flip page"
+        aria-label="Flip page"
         class="theme-button">
         <mat-icon>
             3d_rotation
@@ -12,6 +13,7 @@
         (click)="toggleTheme()"
         mat-button
         matTooltip="Toggle theme"
+        aria-label="Toggle theme"
         class="theme-button">
         <mat-icon>
             {{themeIcon$ | async}}
