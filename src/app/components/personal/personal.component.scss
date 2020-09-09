@@ -1,8 +1,9 @@
 @import 'tokens';
 
 .personal-body {
-    display: flex;
     min-width: 0;
+    display: flex;
+    align-items: center;
     margin-bottom: 16pt;
     
     @media screen and (max-width: #{$width}) {
