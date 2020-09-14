@@ -18,8 +18,7 @@
         width: 100%;
         height: $block-height + $pseudo-block-height;
         // Sticky block z-index should be below header's and above page content.
-        // Also it should not excess row-block z-index
-        z-index: 1;
+        z-index: 2;
 
         @media print {
             display: none;
@@ -50,7 +49,7 @@
             );
             // Background located in theme style
             transition: background 300ms ease;
-            z-index: 2;
+            z-index: 3;
         }
 
         .toolbar-component {
@@ -59,7 +58,7 @@
             top: 0;
             height: $block-height;
             margin-top: -$pseudo-block-height;
-            z-index: 3;
+            z-index: 4;
         }
     }
 
