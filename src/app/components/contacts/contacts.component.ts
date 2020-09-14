@@ -16,6 +16,7 @@ import { ThemeService } from '../../services/theme/theme.service';
 })
 export class ContactsComponent implements OnInit {
 
+    public readonly githubColor$ = this.githubColorChanges();
     public readonly metropolitenColor$ = this.metropolitenColorChanges();
 
     constructor(
@@ -28,8 +29,7 @@ export class ContactsComponent implements OnInit {
     public ngOnInit(): void {
         this.registerIcon('metropoliten');
         this.registerIcon('telegram');
-        this.registerIcon('github-dark');
-        this.registerIcon('github-light');
+        this.registerIcon('github');
         this.registerIcon('skype');
     }
 
@@ -43,6 +43,16 @@ export class ContactsComponent implements OnInit {
                 map((theme: Theme) => theme === Theme.LIGHT
                     ? '#204982' // Original brand color
                     : '#73adff'
+                ),
+            );
+    }
+
+    private githubColorChanges(): Observable<string> {
+        return this.theme.themeChanges()
+            .pipe(
+                map((theme: Theme) => theme === Theme.LIGHT
+                    ? '#231e1b'
+                    : '#fff'
                 ),
             );
     }
