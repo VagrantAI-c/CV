@@ -33,12 +33,12 @@
             "styles": [
               {
                 "input": "src/styles/themes/light-theme.scss",
-                "lazy": true,
+                "inject": false,
                 "bundleName": "light-theme"
               },
               {
                 "input": "src/styles/themes/dark-theme.scss",
-                "lazy": true,
+                "inject": false,
                 "bundleName": "dark-theme"
               },
               "src/styles/theming.scss",
