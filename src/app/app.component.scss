@@ -157,8 +157,9 @@
             top: 0;
             height: 100%;
             display: flex;
-            align-items: flex-end;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
             text-align: center;
             font-size: 10pt;
 
@@ -191,11 +192,11 @@
         }
     }
 
-    .ozon-image {
+    .guy-image {
         max-width: 100%;
     }
 
-    .ozon-label {
+    .guy-label {
         text-align: center;
     }
 }
